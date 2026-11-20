@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: bwalloc
+Version: 0.1.0
+Summary: Prediction-based bandwidth allocation vs traditional schedulers (CSD355 project)
+Requires-Python: >=3.10

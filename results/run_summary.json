@@ -1,0 +1,314 @@
+{
+  "datasets": {
+    "fcc": {
+      "dataset": "fcc",
+      "source": "synthetic",
+      "path": null,
+      "window": "1h",
+      "preprocess": {
+        "dataset": "fcc",
+        "window": "1h",
+        "raw_rows": 113618,
+        "raw_users": 115,
+        "windows": 1008,
+        "users_dropped_missing": 6,
+        "users_kept": 100,
+        "values_interpolated": 1044,
+        "values_ffilled": 3,
+        "values_clipped": 153,
+        "train_end": "2013-12-09 15:00:00+00:00",
+        "notes": []
+      },
+      "features": [
+        "lag_1",
+        "lag_2",
+        "lag_3",
+        "lag_24h",
+        "lag_7d",
+        "mean_1h",
+        "std_1h",
+        "mean_6h",
+        "max_6h",
+        "mean_24h",
+        "trend_short",
+        "pct_change_1h",
+        "hour_sin",
+        "hour_cos",
+        "day_of_week",
+        "is_weekend",
+        "is_peak_hour",
+        "total_load",
+        "share_of_total",
+        "entity_avg"
+      ],
+      "features_dropped": [],
+      "peak_hours": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "best_model": "Random Forest (depth=10, leaf=5)",
+      "capacity": 1263.674199214619,
+      "peak_total_demand": 1805.2488560208844,
+      "holdout_start": "2013-12-10 18:00:00+00:00",
+      "holdout_windows": 126,
+      "users": 100
+    },
+    "milan": {
+      "dataset": "milan",
+      "source": "synthetic",
+      "path": null,
+      "window": "10min",
+      "preprocess": {
+        "dataset": "milan",
+        "window": "10min",
+        "raw_rows": 454288,
+        "raw_users": 115,
+        "windows": 4032,
+        "users_dropped_missing": 6,
+        "users_kept": 100,
+        "values_interpolated": 4357,
+        "values_ffilled": 1,
+        "values_clipped": 578,
+        "train_end": "2013-11-27 19:00:00+00:00",
+        "notes": []
+      },
+      "features": [
+        "lag_1",
+        "lag_2",
+        "lag_3",
+        "lag_24h",
+        "lag_7d",
+        "mean_1h",
+        "std_1h",
+        "mean_6h",
+        "max_6h",
+        "mean_24h",
+        "trend_short",
+        "pct_change_1h",
+        "hour_sin",
+        "hour_cos",
+        "day_of_week",
+        "is_weekend",
+        "is_peak_hour",
+        "total_load",
+        "share_of_total",
+        "entity_avg"
+      ],
+      "features_dropped": [],
+      "peak_hours": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "best_model": "Random Forest (depth=None, leaf=5)",
+      "capacity": 3713.3018536897375,
+      "peak_total_demand": 5304.716933842483,
+      "holdout_start": "2013-11-28 20:20:00+00:00",
+      "holdout_windows": 454,
+      "users": 100
+    },
+    "mawi": {
+      "dataset": "mawi",
+      "source": "real",
+      "path": "/Users/vanshikasrivastava/Desktop/Projects/FDS/data/processed/mawi.csv",
+      "window": "1h",
+      "preprocess": {
+        "dataset": "mawi",
+        "window": "1h",
+        "raw_rows": 274095,
+        "raw_users": 277,
+        "windows": 1008,
+        "users_dropped_missing": 268,
+        "users_kept": 9,
+        "values_interpolated": 33,
+        "values_ffilled": 336,
+        "values_clipped": 16,
+        "train_end": "2026-11-09 15:00:00+00:00",
+        "notes": [
+          "only 9 users available (asked for 50)"
+        ]
+      },
+      "features": [
+        "lag_1",
+        "lag_2",
+        "lag_3",
+        "lag_24h",
+        "lag_7d",
+        "mean_1h",
+        "std_1h",
+        "mean_6h",
+        "max_6h",
+        "mean_24h",
+        "trend_short",
+        "pct_change_1h",
+        "hour_sin",
+        "hour_cos",
+        "day_of_week",
+        "is_weekend",
+        "is_peak_hour",
+        "total_load",
+        "share_of_total",
+        "entity_avg"
+      ],
+      "features_dropped": [],
+      "peak_hours": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "best_model": "Last Value",
+      "capacity": 1123.8006599757778,
+      "peak_total_demand": 1605.4295142511112,
+      "holdout_start": "2026-11-10 18:00:00+00:00",
+      "holdout_windows": 126,
+      "users": 9
+    },
+    "caida": {
+      "dataset": "caida",
+      "source": "synthetic",
+      "path": null,
+      "window": "1h",
+      "preprocess": {
+        "dataset": "caida",
+        "window": "1h",
+        "raw_rows": 90779,
+        "raw_users": 92,
+        "windows": 1008,
+        "users_dropped_missing": 5,
+        "users_kept": 80,
+        "values_interpolated": 916,
+        "values_ffilled": 4,
+        "values_clipped": 105,
+        "train_end": "2013-12-09 15:00:00+00:00",
+        "notes": []
+      },
+      "features": [
+        "lag_1",
+        "lag_2",
+        "lag_3",
+        "lag_24h",
+        "lag_7d",
+        "mean_1h",
+        "std_1h",
+        "mean_6h",
+        "max_6h",
+        "mean_24h",
+        "trend_short",
+        "pct_change_1h",
+        "hour_sin",
+        "hour_cos",
+        "day_of_week",
+        "is_weekend",
+        "is_peak_hour",
+        "total_load",
+        "share_of_total",
+        "entity_avg"
+      ],
+      "features_dropped": [],
+      "peak_hours": [
+        19,
+        20,
+        21,
+        22
+      ],
+      "best_model": "Random Forest (depth=10, leaf=5)",
+      "capacity": 1891.3010247366283,
+      "peak_total_demand": 2701.858606766612,
+      "holdout_start": "2013-12-10 18:00:00+00:00",
+      "holdout_windows": 126,
+      "users": 80
+    }
+  },
+  "config": {
+    "seed": 42,
+    "datasets": {
+      "milan": {
+        "source": "synthetic",
+        "window": "10min",
+        "n_users": 100,
+        "days": 28
+      },
+      "mawi": {
+        "source": "real",
+        "window": "1h",
+        "n_users": 50,
+        "days": 42
+      },
+      "caida": {
+        "source": "synthetic",
+        "window": "1h",
+        "n_users": 80,
+        "days": 42
+      },
+      "fcc": {
+        "source": "synthetic",
+        "window": "1h",
+        "n_users": 100,
+        "days": 42
+      }
+    },
+    "cross_dataset_window": "1h",
+    "preprocess": {
+      "max_gap_windows": 2,
+      "max_missing_frac": 0.1,
+      "clip_quantile": 0.999
+    },
+    "split": {
+      "holdout_frac": 0.15,
+      "n_splits": 5
+    },
+    "models": {
+      "random_forest": {
+        "n_estimators": 200,
+        "max_depth": [
+          10,
+          20,
+          null
+        ],
+        "min_samples_leaf": [
+          1,
+          5
+        ]
+      },
+      "gradient_boosting": {
+        "n_estimators": 300,
+        "learning_rate": 0.05,
+        "max_depth": 3
+      },
+      "max_train_rows": 60000,
+      "cv_max_train_rows": 30000,
+      "cv_n_estimators": 60
+    },
+    "simulator": {
+      "capacity_frac": 0.7,
+      "capacity_sweep": [
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9
+      ],
+      "starvation_threshold": 0.5,
+      "noise_levels": [
+        0.0,
+        0.1,
+        0.2,
+        0.3,
+        0.5,
+        0.75,
+        1.0
+      ]
+    }
+  },
+  "finished_at": "2026-11-20T14:17:48.885168+00:00",
+  "runtime_seconds": 423.6,
+  "cross_dataset": {
+    "model": "Random Forest (depth=None, leaf=5)",
+    "window": "1h",
+    "units": "MAE in multiples of each user's own mean demand"
+  }
+}

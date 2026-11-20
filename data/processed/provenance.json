@@ -1,0 +1,304 @@
+{
+  "mawi": {
+    "source": "http://mawi.wide.ad.jp/~agurim/cgi-bin/myagurim.cgi",
+    "service": "MAWI agurim aggregate flows (WIDE backbone)",
+    "downloaded_at": "2026-11-20T14:05:39.471826+00:00",
+    "threshold_pct": 1,
+    "days": [
+      {
+        "day": "2026-10-05",
+        "flows": 45,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1791158400 -E 1791244800  202610/20261005/20261005.agr 202610/20261006/20261006.agr"
+      },
+      {
+        "day": "2026-10-06",
+        "flows": 43,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1791244800 -E 1791331200  202610/20261006/20261006.agr 202610/20261007/20261007.agr"
+      },
+      {
+        "day": "2026-10-07",
+        "flows": 50,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1791331200 -E 1791417600  202610/20261007/20261007.agr 202610/20261008/20261008.agr"
+      },
+      {
+        "day": "2026-10-08",
+        "flows": 50,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1791417600 -E 1791504000  202610/20261008/20261008.agr 202610/20261009/20261009.agr"
+      },
+      {
+        "day": "2026-10-09",
+        "flows": 49,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1791504000 -E 1791590400  202610/20261009/20261009.agr 202610/20261010/20261010.agr"
+      },
+      {
+        "day": "2026-10-10",
+        "flows": 48,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1791590400 -E 1791676800  202610/20261010/20261010.agr 202610/20261011/20261011.agr"
+      },
+      {
+        "day": "2026-10-11",
+        "flows": 48,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1791676800 -E 1791763200  202610/20261011/20261011.agr 202610/20261012/20261012.agr"
+      },
+      {
+        "day": "2026-10-12",
+        "flows": 45,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1791763200 -E 1791849600  202610/20261012/20261012.agr 202610/20261013/20261013.agr"
+      },
+      {
+        "day": "2026-10-13",
+        "flows": 51,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1791849600 -E 1791936000  202610/20261013/20261013.agr 202610/20261014/20261014.agr"
+      },
+      {
+        "day": "2026-10-14",
+        "flows": 50,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1791936000 -E 1792022400  202610/20261014/20261014.agr 202610/20261015/20261015.agr"
+      },
+      {
+        "day": "2026-10-15",
+        "flows": 48,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1792022400 -E 1792108800  202610/20261015/20261015.agr 202610/20261016/20261016.agr"
+      },
+      {
+        "day": "2026-10-16",
+        "flows": 48,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1792108800 -E 1792195200  202610/20261016/20261016.agr 202610/20261017/20261017.agr"
+      },
+      {
+        "day": "2026-10-17",
+        "flows": 45,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1792195200 -E 1792281600  202610/20261017/20261017.agr 202610/20261018/20261018.agr"
+      },
+      {
+        "day": "2026-10-18",
+        "flows": 42,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1792281600 -E 1792368000  202610/20261018/20261018.agr 202610/20261019/20261019.agr"
+      },
+      {
+        "day": "2026-10-19",
+        "flows": 48,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1792368000 -E 1792454400  202610/20261019/20261019.agr 202610/20261020/20261020.agr"
+      },
+      {
+        "day": "2026-10-20",
+        "flows": 49,
+        "interval_s": 600,
+        "points": 143,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1792454400 -E 1792540800  202610/20261020/20261020.agr 202610/20261021/20261021.agr"
+      },
+      {
+        "day": "2026-10-21",
+        "flows": 42,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1792540800 -E 1792627200  202610/20261021/20261021.agr 202610/20261022/20261022.agr"
+      },
+      {
+        "day": "2026-10-22",
+        "flows": 45,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1792627200 -E 1792713600  202610/20261022/20261022.agr 202610/20261023/20261023.agr"
+      },
+      {
+        "day": "2026-10-23",
+        "flows": 45,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1792713600 -E 1792800000  202610/20261023/20261023.agr 202610/20261024/20261024.agr"
+      },
+      {
+        "day": "2026-10-24",
+        "flows": 50,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1792800000 -E 1792886400  202610/20261024/20261024.agr 202610/20261025/20261025.agr"
+      },
+      {
+        "day": "2026-10-25",
+        "flows": 47,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1792886400 -E 1792972800  202610/20261025/20261025.agr 202610/20261026/20261026.agr"
+      },
+      {
+        "day": "2026-10-26",
+        "flows": 44,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1792972800 -E 1793059200  202610/20261026/20261026.agr 202610/20261027/20261027.agr"
+      },
+      {
+        "day": "2026-10-27",
+        "flows": 47,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1793059200 -E 1793145600  202610/20261027/20261027.agr 202610/20261028/20261028.agr"
+      },
+      {
+        "day": "2026-10-28",
+        "flows": 43,
+        "interval_s": 600,
+        "points": 128,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1793145600 -E 1793232000  202610/20261028/20261028.agr 202610/20261029/20261029.agr"
+      },
+      {
+        "day": "2026-10-29",
+        "flows": 45,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1793232000 -E 1793318400  202610/20261029/20261029.agr 202610/20261030/20261030.agr"
+      },
+      {
+        "day": "2026-10-30",
+        "flows": 45,
+        "interval_s": 600,
+        "points": 143,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1793318400 -E 1793404800  202610/20261030/20261030.agr 202610/20261031/20261031.agr"
+      },
+      {
+        "day": "2026-10-31",
+        "flows": 54,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1793404800 -E 1793491200  202610/20261031/20261031.agr 202611/20261101/20261101.agr"
+      },
+      {
+        "day": "2026-11-01",
+        "flows": 60,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1793491200 -E 1793577600  202611/20261101/20261101.agr 202611/20261102/20261102.agr"
+      },
+      {
+        "day": "2026-11-02",
+        "flows": 51,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1793577600 -E 1793664000  202611/20261102/20261102.agr 202611/20261103/20261103.agr"
+      },
+      {
+        "day": "2026-11-03",
+        "flows": 46,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1793664000 -E 1793750400  202611/20261103/20261103.agr 202611/20261104/20261104.agr"
+      },
+      {
+        "day": "2026-11-04",
+        "flows": 46,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1793750400 -E 1793836800  202611/20261104/20261104.agr 202611/20261105/20261105.agr"
+      },
+      {
+        "day": "2026-11-05",
+        "flows": 49,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1793836800 -E 1793923200  202611/20261105/20261105.agr 202611/20261106/20261106.agr"
+      },
+      {
+        "day": "2026-11-06",
+        "flows": 48,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1793923200 -E 1794009600  202611/20261106/20261106.agr 202611/20261107/20261107.agr"
+      },
+      {
+        "day": "2026-11-07",
+        "flows": 55,
+        "interval_s": 600,
+        "points": 143,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1794009600 -E 1794096000  202611/20261107/20261107.agr 202611/20261108/20261108.agr"
+      },
+      {
+        "day": "2026-11-08",
+        "flows": 52,
+        "interval_s": 600,
+        "points": 134,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1794096000 -E 1794182400  202611/20261108/20261108.agr 202611/20261109/20261109.agr"
+      },
+      {
+        "day": "2026-11-09",
+        "flows": 41,
+        "interval_s": 600,
+        "points": 142,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1794182400 -E 1794268800  202611/20261109/20261109.agr 202611/20261110/20261110.agr"
+      },
+      {
+        "day": "2026-11-10",
+        "flows": 44,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1794268800 -E 1794355200  202611/20261110/20261110.agr 202611/20261111/20261111.agr"
+      },
+      {
+        "day": "2026-11-11",
+        "flows": 53,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1794355200 -E 1794441600  202611/20261111/20261111.agr 202611/20261112/20261112.agr"
+      },
+      {
+        "day": "2026-11-12",
+        "flows": 46,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1794441600 -E 1794528000  202611/20261112/20261112.agr 202611/20261113/20261113.agr"
+      },
+      {
+        "day": "2026-11-13",
+        "flows": 43,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1794528000 -E 1794614400  202611/20261113/20261113.agr 202611/20261114/20261114.agr"
+      },
+      {
+        "day": "2026-11-14",
+        "flows": 47,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1794614400 -E 1794700800  202611/20261114/20261114.agr 202611/20261115/20261115.agr"
+      },
+      {
+        "day": "2026-11-15",
+        "flows": 50,
+        "interval_s": 600,
+        "points": 144,
+        "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1794700800 -E 1794787200  202611/20261115/20261115.agr 202611/20261116/20261116.agr"
+      }
+    ]
+  }
+}

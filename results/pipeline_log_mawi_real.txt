@@ -1,0 +1,14 @@
+[19:38:36] [mawi] load (real) + preprocess
+[19:38:37] [mawi] 7,560 feature rows, 20 features, dropped=[], peak hours=[7, 8, 9, 10]
+[19:38:37] [mawi] walk-forward CV (5 folds)
+[19:38:38]     fold 1/5 done
+[19:38:39]     fold 2/5 done
+[19:38:41]     fold 3/5 done
+[19:38:44]     fold 4/5 done
+[19:38:47]     fold 5/5 done
+[19:38:47] [mawi] best in CV: Last Value
+[19:38:47] [mawi] final fit + holdout evaluation
+[19:38:49] [mawi] simulate allocation (C = 1,123.8)
+[19:38:49] [mawi] capacity sweep + noise sensitivity
+[19:38:49] cross-dataset matrix with Random Forest (depth=None, leaf=5), 20 common features
+[19:40:06] done in 90s -> /Users/vanshikasrivastava/Desktop/Projects/FDS/results

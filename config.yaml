@@ -1,0 +1,62 @@
+# Experiment settings — mirrors Section 3.7 of the proposal.
+# Final values are chosen on walk-forward folds and reported with results.
+
+seed: 42
+
+# Where data comes from per dataset: "synthetic" or "real".
+# "real" expects data/processed/<name>.csv produced by notebooks/colab_data_prep.ipynb
+datasets:
+  milan:
+    source: synthetic
+    window: 10min        # Milan-only experiments use 10-minute windows
+    n_users: 100
+    days: 28
+  mawi:
+    source: real          # MAWI agurim aggregate flows, scripts/fetch_mawi_agurim.py
+    window: 1h
+    n_users: 50           # only flows with <= 10% missing survive (9 in our download)
+    days: 42              # used only for synthetic
+  caida:
+    source: synthetic
+    window: 1h
+    n_users: 80
+    days: 42
+  fcc:
+    source: synthetic
+    window: 1h
+    n_users: 100
+    days: 42
+
+# Cross-dataset comparisons use a common 1-hour window
+cross_dataset_window: 1h
+
+preprocess:
+  max_gap_windows: 2           # linear interpolation for gaps up to this many windows
+  max_missing_frac: 0.10       # drop users missing more than this share of windows
+  clip_quantile: 0.999         # spike clipping, fitted on training data only
+
+split:
+  holdout_frac: 0.15           # final untouched holdout (last 15%)
+  n_splits: 5                  # walk-forward TimeSeriesSplit folds on first 85%
+
+models:
+  random_forest:
+    n_estimators: 200
+    max_depth: [10, 20, null]
+    min_samples_leaf: [1, 5]
+  gradient_boosting:
+    n_estimators: 300
+    learning_rate: 0.05
+    max_depth: 3
+  # Training rows are subsampled for speed (set null to use all).
+  # Hyper-parameters are tuned in CV with fewer trees / rows; the chosen config is
+  # then refit with the full n_estimators on max_train_rows.
+  max_train_rows: 60000
+  cv_max_train_rows: 30000
+  cv_n_estimators: 60
+
+simulator:
+  capacity_frac: 0.70          # C = 70% of peak total demand
+  capacity_sweep: [0.5, 0.6, 0.7, 0.8, 0.9]
+  starvation_threshold: 0.5    # user starves if it gets < 50% of what it needed
+  noise_levels: [0.0, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0]  # multiplicative forecast noise (std)

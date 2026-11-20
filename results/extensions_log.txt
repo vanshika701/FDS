@@ -1,0 +1,67 @@
+[19:48:02] [milan] LSTM
+[19:49:15]     LSTM trained 30 epochs in 71s, best val MSE 0.0103
+[19:49:16] [milan] SARIMA skipped: 10min windows -> season of 144 steps
+[19:49:16] [milan]
+         forecaster  NMAE  improvement_vs_last_%  jain  unmet_frac
+      Random Forest 0.034                 17.390 1.000       0.022
+               LSTM 0.035                 13.667 1.000       0.021
+  Gradient Boosting 0.036                 11.255 1.000       0.022
+         Last Value 0.041                  0.000 1.000       0.022
+  Linear Regression 0.048                -17.588 0.998       0.022
+Moving Average (1h) 0.102               -149.849 0.999       0.023
+[19:49:16] [mawi] LSTM
+[19:49:22]     LSTM trained 30 epochs in 6s, best val MSE 0.2192
+[19:49:22] [mawi] SARIMA(1,0,1)x(1,0,1,24) for 9 users
+[19:49:42]     SARIMA 9/9 users (19s)
+[19:49:42] [mawi]
+         forecaster  NMAE  improvement_vs_last_%  jain  unmet_frac
+  Gradient Boosting 0.233                  3.054 0.994       0.030
+             SARIMA 0.234                  2.518 0.992       0.033
+  Linear Regression 0.235                  2.111 0.993       0.030
+      Random Forest 0.236                  1.856 0.995       0.029
+         Last Value 0.240                  0.000 0.984       0.036
+               LSTM 0.266                -10.585 0.992       0.039
+Moving Average (1h) 0.268                -11.531 0.986       0.042
+[19:49:42] [caida] LSTM
+[19:50:18]     LSTM trained 20 epochs in 35s, best val MSE 0.2570
+[19:50:18] [caida] SARIMA(1,0,1)x(1,0,1,24) for 80 users
+[19:50:40]     SARIMA 10/80 users (22s)
+[19:51:03]     SARIMA 20/80 users (45s)
+[19:51:28]     SARIMA 30/80 users (70s)
+[19:51:50]     SARIMA 40/80 users (92s)
+[19:52:18]     SARIMA 50/80 users (120s)
+[19:52:40]     SARIMA 60/80 users (143s)
+[19:53:05]     SARIMA 70/80 users (168s)
+[19:53:31]     SARIMA 80/80 users (193s)
+[19:53:31] [caida]
+         forecaster  NMAE  improvement_vs_last_%  jain  unmet_frac
+               LSTM 0.274                 16.710 0.982       0.096
+      Random Forest 0.283                 13.890 0.981       0.098
+             SARIMA 0.285                 13.273 0.981       0.102
+  Gradient Boosting 0.287                 12.704 0.982       0.098
+  Linear Regression 0.322                  2.001 0.952       0.112
+         Last Value 0.328                  0.000 0.976       0.111
+Moving Average (1h) 0.405                -23.306 0.973       0.137
+[19:53:31] [fcc] LSTM
+[19:54:24]     LSTM trained 30 epochs in 53s, best val MSE 0.7227
+[19:54:24] [fcc] SARIMA(1,0,1)x(1,0,1,24) for 100 users
+[19:54:45]     SARIMA 10/100 users (21s)
+[19:55:05]     SARIMA 20/100 users (42s)
+[19:55:27]     SARIMA 30/100 users (63s)
+[19:55:49]     SARIMA 40/100 users (85s)
+[19:56:10]     SARIMA 50/100 users (107s)
+[19:56:32]     SARIMA 60/100 users (128s)
+[19:56:53]     SARIMA 70/100 users (149s)
+[19:57:14]     SARIMA 80/100 users (170s)
+[19:57:36]     SARIMA 90/100 users (192s)
+[19:57:59]     SARIMA 100/100 users (215s)
+[19:57:59] [fcc]
+         forecaster  NMAE  improvement_vs_last_%  jain  unmet_frac
+             SARIMA 0.400                 22.034 0.989       0.056
+               LSTM 0.401                 21.815 0.990       0.054
+      Random Forest 0.420                 18.081 0.990       0.057
+  Gradient Boosting 0.425                 17.165 0.990       0.057
+  Linear Regression 0.482                  6.028 0.912       0.082
+         Last Value 0.513                  0.000 0.984       0.072
+Moving Average (1h) 0.670                -30.762 0.984       0.082
+[19:57:59] done

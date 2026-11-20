@@ -1,0 +1,50 @@
+[19:40:45] [milan] load (synthetic) + preprocess
+[19:40:47] [milan] 302,400 feature rows, 20 features, dropped=[], peak hours=[10, 11, 12, 13]
+[19:40:47] [milan] walk-forward CV (5 folds)
+[19:41:05]     fold 1/5 done
+[19:41:26]     fold 2/5 done
+[19:41:48]     fold 3/5 done
+[19:42:09]     fold 4/5 done
+[19:42:30]     fold 5/5 done
+[19:42:30] [milan] best in CV: Random Forest (depth=None, leaf=5)
+[19:42:30] [milan] final fit + holdout evaluation
+[19:42:55] [milan] simulate allocation (C = 3,713.3)
+[19:42:55] [milan] capacity sweep + noise sensitivity
+[19:42:57] [mawi] load (real) + preprocess
+[19:42:57] [mawi] 7,560 feature rows, 20 features, dropped=[], peak hours=[7, 8, 9, 10]
+[19:42:57] [mawi] walk-forward CV (5 folds)
+[19:42:59]     fold 1/5 done
+[19:43:01]     fold 2/5 done
+[19:43:03]     fold 3/5 done
+[19:43:06]     fold 4/5 done
+[19:43:10]     fold 5/5 done
+[19:43:10] [mawi] best in CV: Last Value
+[19:43:10] [mawi] final fit + holdout evaluation
+[19:43:12] [mawi] simulate allocation (C = 1,123.8)
+[19:43:12] [mawi] capacity sweep + noise sensitivity
+[19:43:12] [caida] load (synthetic) + preprocess
+[19:43:13] [caida] 67,200 feature rows, 20 features, dropped=[], peak hours=[19, 20, 21, 22]
+[19:43:13] [caida] walk-forward CV (5 folds)
+[19:43:19]     fold 1/5 done
+[19:43:32]     fold 2/5 done
+[19:43:52]     fold 3/5 done
+[19:44:12]     fold 4/5 done
+[19:44:34]     fold 5/5 done
+[19:44:34] [caida] best in CV: Random Forest (depth=10, leaf=5)
+[19:44:34] [caida] final fit + holdout evaluation
+[19:44:52] [caida] simulate allocation (C = 1,891.3)
+[19:44:52] [caida] capacity sweep + noise sensitivity
+[19:44:52] [fcc] load (synthetic) + preprocess
+[19:44:53] [fcc] 84,000 feature rows, 20 features, dropped=[], peak hours=[0, 1, 2, 3]
+[19:44:53] [fcc] walk-forward CV (5 folds)
+[19:45:01]     fold 1/5 done
+[19:45:16]     fold 2/5 done
+[19:45:37]     fold 3/5 done
+[19:45:57]     fold 4/5 done
+[19:46:17]     fold 5/5 done
+[19:46:17] [fcc] best in CV: Random Forest (depth=10, leaf=5)
+[19:46:17] [fcc] final fit + holdout evaluation
+[19:46:35] [fcc] simulate allocation (C = 1,263.7)
+[19:46:35] [fcc] capacity sweep + noise sensitivity
+[19:46:36] cross-dataset matrix with Random Forest (depth=None, leaf=5), 20 common features
+[19:47:48] done in 424s -> /Users/vanshikasrivastava/Desktop/Projects/FDS/results
