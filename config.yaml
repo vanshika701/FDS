@@ -7,7 +7,7 @@ seed: 42
 # "real" expects data/processed/<name>.csv produced by notebooks/colab_data_prep.ipynb
 datasets:
   milan:
-    source: synthetic
+    source: real          # Telecom Italia Milan, 19 days (2013-11-04..22), 150 cells streamed
     window: 10min        # Milan-only experiments use 10-minute windows
     n_users: 100
     days: 28
@@ -16,16 +16,16 @@ datasets:
     window: 1h
     n_users: 50           # only flows with <= 10% missing survive (9 in our download)
     days: 42              # used only for synthetic
-  caida:
-    source: synthetic
-    window: 1h
-    n_users: 80
-    days: 42
-  fcc:
-    source: synthetic
+  geant:                 # replaces CAIDA (CAIDA traces need an access request)
+    source: real          # GÉANT backbone OD traffic matrices (SNDlib), prepare_real_data.py geant
     window: 1h
     n_users: 100
-    days: 42
+    days: 42              # used only for synthetic
+  cesnet:                # replaces FCC (fcc.gov raw-data links unreachable)
+    source: real          # CESNET-TimeSeries24 per-IP ISP traffic, prepare_real_data.py cesnet
+    window: 1h
+    n_users: 100
+    days: 42              # used only for synthetic
 
 # Cross-dataset comparisons use a common 1-hour window
 cross_dataset_window: 1h

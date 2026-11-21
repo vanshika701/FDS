@@ -106,7 +106,11 @@ def main() -> None:
         log(f"[{name}]\n" + res[["forecaster", "NMAE", "improvement_vs_last_%", "jain",
                                  "unmet_frac"]].round(3).to_string(index=False))
         allres.append(res)
-    pd.concat(allres).to_csv(RESULTS_DIR / "forecaster_comparison.csv", index=False)
+    # Combined table is rebuilt from every configured dataset's own file, so running a
+    # subset (--datasets x) never drops the other datasets' rows.
+    parts = [pd.read_csv(RESULTS_DIR / n / "extension_forecasters.csv") for n in cfg["datasets"]
+             if (RESULTS_DIR / n / "extension_forecasters.csv").exists()]
+    pd.concat(parts).to_csv(RESULTS_DIR / "forecaster_comparison.csv", index=False)
     log("done")
 
 

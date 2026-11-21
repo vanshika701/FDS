@@ -109,6 +109,26 @@ forecast give a fairer link?". Scoring both on the same rows answers that direct
 SARIMA is skipped for 10-minute data (a 144-step season is impractically slow), as the proposal
 anticipated.
 
+### D19. CESNET-TimeSeries24 replaces FCC Measuring Broadband America
+**What:** the 4th dataset is the CESNET-TimeSeries24 IP sample (Zenodo 10.5281/zenodo.13382427,
+CC-BY-4.0): hourly traffic of individual IP addresses on the Czech national research & education
+ISP network. We use 6 weeks (2023-10-09 to 2023-11-20) and the 100 busiest IPs.
+**Why:** fcc.gov blocks scripted downloads and its raw-data links did not work in the browser
+either. SNAP (Stanford) was checked: its network datasets are graphs with no traffic volumes over
+time. CESNET is the closest public *per-user* demand dataset, and it is scriptable.
+**Trade-off:** its users are university/institute IPs, not homes, so we label it "research-ISP
+IPs" and do not claim home-broadband results. A missing hour in CESNET means **zero traffic**, not
+missing data, so it is filled with 0 (otherwise idle users would be dropped as "missing").
+
+### D20. Real Milan: 19 days instead of 28
+**What:** the Milan stream was stopped after 19 daily files (2013-11-04 to 2013-11-22; 150 cells,
+the 100 most active kept).
+**Why:** Harvard Dataverse slowed to ~200 KB/s, so the remaining ~3.5 GB would take ~5 hours.
+19 days at 10-minute windows (2,736 windows) still fits every feature (lag_7d needs ≤ 40% of the
+series), 5 walk-forward folds and a 2.8-day holdout. The script resumes from day 20 if needed.
+**Note:** Milan's "internet" value is an anonymised activity count, not Mbps; it is used as a
+relative demand signal (all metrics are ratios, so the unit does not matter for fairness).
+
 ### D15. Chart colors follow the method, not its rank
 **What:** one fixed, colorblind-validated palette in `src/bwalloc/style.py`, shared by all
 figures and the dashboard; marker shape encodes the family (traditional / proposed /
@@ -129,4 +149,5 @@ benchmark / ablation).
 | B10 | Milan files need a guestbook response before download | API returned "required Guestbook response" | Script POSTs the guestbook (email from an env var the user sets) and downloads from the signed URL |
 | B11 | Latent: if `mean_1h` were dropped (short trace), `pct_change_1h` would be all-NaN and delete every row | Code review while adding real packet data | Drop them together; test with a 15-minute 1-min-window trace |
 | B12 | MAWI fetcher crashed at start: bare `%` in an argparse help string | Traceback | Escaped as `%%` |
+| B13 | `run_extensions.py --datasets cesnet` overwrote the combined forecaster table with only CESNET rows | Row counts per dataset after the run | Combined table is rebuilt from every dataset's own file |
 | B8 | Figure: the green diamond was drawn over the blue one, so the "Predictive (Prop.)" label pointed at the wrong color | Looked at the rendered PNG | Most important methods drawn last (on top) |

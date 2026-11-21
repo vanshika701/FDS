@@ -34,7 +34,9 @@ DATASET_LABELS = {
     "milan": "Milan (mobile grid)",
     "mawi": "MAWI (backbone)",
     "caida": "CAIDA (backbone)",
+    "geant": "GÉANT (EU backbone)",
     "fcc": "FCC (home broadband)",
+    "cesnet": "CESNET (research-ISP IPs)",
 }
 
 SEQUENTIAL_BLUE = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"]

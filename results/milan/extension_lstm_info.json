@@ -1,6 +1,6 @@
 {
-  "epochs": 30,
-  "best_val_mse": 0.010346686467528343,
+  "epochs": 24,
+  "best_val_mse": 0.019307516515254974,
   "train_seqs": 60000,
   "seq_len": 24,
   "hidden": 32

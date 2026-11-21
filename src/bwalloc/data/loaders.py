@@ -90,6 +90,76 @@ def packets_to_demand(packets: pd.DataFrame, window: str = "1min",
     })
 
 
+def parse_cesnet_ip_dir(series_dir: str | Path, times_csv: str | Path, start: str,
+                        days: int, window: str = "1h") -> pd.DataFrame:
+    """CESNET-TimeSeries24 per-IP files (one CSV per IP, columns id_time, n_bytes, ...).
+
+    CESNET only writes a row for windows in which the IP had traffic, so a missing
+    window means ZERO traffic, not missing data; it is filled with 0 here.
+    Entity = one anonymised IP address of an ISP customer (closest public analogue to
+    FCC's "one home").
+    """
+    times = pd.read_csv(times_csv)
+    times["time"] = pd.to_datetime(times["time"], utc=True)
+    t_start = pd.Timestamp(start, tz="UTC")
+    sel = times[(times["time"] >= t_start) & (times["time"] < t_start + pd.Timedelta(days=days))]
+    id_to_time = sel.set_index("id_time")["time"]
+    seconds = pd.Timedelta(window).total_seconds()
+    parts = []
+    for f in sorted(Path(series_dir).glob("*.csv")):
+        x = pd.read_csv(f, usecols=["id_time", "n_bytes"])
+        x = x[x["id_time"].isin(id_to_time.index)]
+        s = pd.Series(0.0, index=id_to_time.values)  # full grid, zeros = no traffic
+        s.loc[id_to_time.loc[x["id_time"]].values] = x["n_bytes"].to_numpy() * 8 / seconds / 1e6
+        parts.append(pd.DataFrame({"entity_id": f"ip_{f.stem}", "timestamp": s.index,
+                                   "demand_mbps": s.to_numpy()}))
+    return pd.concat(parts, ignore_index=True)
+
+
+def parse_sndlib_tm_tar(tar_path: str | Path, start: str, days: int) -> pd.DataFrame:
+    """GÉANT traffic matrices in SNDlib native format (one .txt per 15-min interval).
+
+    Each DEMANDS line is "<id> ( <src> <dst> ) <routing unit> <value Mbit/s> <max path>".
+    Entity = one origin->destination pair of GÉANT points of presence.
+    Inside an existing matrix an unlisted pair means zero traffic. A matrix FILE that
+    does not exist is a missing interval (left as NaN for preprocessing to handle).
+    """
+    import re
+    import tarfile
+
+    t0 = pd.Timestamp(start, tz="UTC")
+    t1 = t0 + pd.Timedelta(days=days)
+    name_re = re.compile(r"15min-(\d{8}-\d{4})\.txt$")
+    line_re = re.compile(r"^\s*\S+\s+\(\s*(\S+)\s+(\S+)\s*\)\s+\S+\s+([\d.eE+-]+)")
+    rows, stamps = [], []
+    with tarfile.open(tar_path) as tar:
+        for m in tar:
+            hit = name_re.search(m.name)
+            if not hit:
+                continue
+            ts = pd.Timestamp(pd.to_datetime(hit.group(1), format="%Y%m%d-%H%M"), tz="UTC")
+            if not (t0 <= ts < t1):
+                continue
+            stamps.append(ts)
+            in_demands = False
+            for raw in tar.extractfile(m).read().decode().splitlines():
+                if raw.startswith("DEMANDS"):
+                    in_demands = True
+                    continue
+                if in_demands:
+                    if raw.startswith(")"):
+                        break
+                    g = line_re.match(raw)
+                    if g:
+                        rows.append((f"{g.group(1)}>{g.group(2)}", ts, float(g.group(3))))
+    df = pd.DataFrame(rows, columns=["entity_id", "timestamp", "demand_mbps"])
+    # unlisted pair in an existing matrix = 0 traffic: complete the grid over existing files
+    full = pd.MultiIndex.from_product([df["entity_id"].unique(), sorted(set(stamps))],
+                                      names=["entity_id", "timestamp"])
+    df = df.set_index(["entity_id", "timestamp"]).reindex(full, fill_value=0.0).reset_index()
+    return df
+
+
 def parse_fcc_usage(path: str | Path, unit_col: str = "unit_id", time_col: str = "dtime",
                     bytes_cols: tuple[str, ...] = ("wan_rx_bytes", "wan_tx_bytes"),
                     window: str = "1h") -> pd.DataFrame:

@@ -1,0 +1,7 @@
+{
+  "epochs": 5,
+  "best_val_mse": 0.48586222529411316,
+  "train_seqs": 60000,
+  "seq_len": 24,
+  "hidden": 32
+}

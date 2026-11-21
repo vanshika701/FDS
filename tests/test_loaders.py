@@ -49,3 +49,32 @@ def test_parse_fcc_usage(tmp_path):
 def test_real_source_requires_processed_file(tmp_path):
     with pytest.raises(FileNotFoundError, match="colab_data_prep"):
         load_dataset("milan", {"source": "real", "path": tmp_path / "missing.csv"})
+
+
+def test_parse_sndlib_geant_matrix(tmp_path):
+    """Unlisted pair in an existing matrix = 0 traffic; values are Mbit/s."""
+    import tarfile
+
+    from bwalloc.data.loaders import parse_sndlib_tm_tar
+
+    def matrix(lines):
+        return ("META (\n  unit  = MBITPERSEC\n)\nDEMANDS (\n" + "\n".join(lines)
+                + "\n)\n").encode()
+
+    files = {
+        "d/demandMatrix-geant-uhlig-15min-20050509-0000.txt":
+            matrix(["  a_b ( a b ) 1 10.5 UNLIMITED", "  b_a ( b a ) 1 2.0 UNLIMITED"]),
+        "d/demandMatrix-geant-uhlig-15min-20050509-0015.txt":
+            matrix(["  a_b ( a b ) 1 12.0 UNLIMITED"]),   # b>a absent -> 0
+    }
+    tar_path = tmp_path / "tm.tgz"
+    with tarfile.open(tar_path, "w:gz") as tar:
+        for name, data in files.items():
+            p = tmp_path / name.split("/")[-1]
+            p.write_bytes(data)
+            tar.add(p, arcname=name)
+    df = parse_sndlib_tm_tar(tar_path, "2005-05-09", 1).set_index(["entity_id", "timestamp"])
+    t1 = pd.Timestamp("2005-05-09 00:15", tz="UTC")
+    assert df.loc[("a>b", t1), "demand_mbps"] == 12.0
+    assert df.loc[("b>a", t1), "demand_mbps"] == 0.0
+    assert len(df) == 4

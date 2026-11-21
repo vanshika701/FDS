@@ -15,12 +15,8 @@ clearly labeled everywhere.
 ---
 
 ## ⏰ Reminders – things only you can do
-- [ ] **Run the real Milan download** (needs your email for the dataset's guestbook; about 9 GB streamed, 30–60 min, resumable):
-  `MILAN_GUESTBOOK_EMAIL="you@example.com" MILAN_GUESTBOOK_NAME="Your Name" .venv/bin/python -u scripts/prepare_real_data.py milan --days 28 --cells 150`
-  then set `milan: source: real` in `config.yaml`.
-- [ ] **Download one month of FCC Measuring Broadband America raw data in a browser** (fcc.gov blocks scripts, HTTP 403).
-  Page: fcc.gov → Measuring Broadband America → Raw Data → any month's fixed-broadband `.tar.gz`.
-  Then: `tar -xzf <file>.tar.gz --include='*netusage*'` → `python scripts/prepare_real_data.py fcc --inputs <path>/curr_netusage.csv` (check column names first with `head -3`), delete the archive, set `fcc: source: real`.
+- [x] ~~Run the real Milan download~~ → done: 19 days (2013-11-04..22) of 150 cells. Stopped early because Harvard's server slowed to ~200 KB/s (~5 h for the rest); resumable with the same command if you ever want 28 days.
+- [x] ~~Download FCC Measuring Broadband America data~~ → fcc.gov links unreachable; **replaced by CESNET-TimeSeries24** (real per-IP ISP traffic, downloaded automatically from Zenodo). SNAP was checked too: only graphs, no traffic volumes.
 - [ ] *(Optional)* Request CAIDA anonymized-trace access (needs approval; caida.org → Data → request). Until then CAIDA stays synthetic.
 
 ## Phase 0 – Setup
@@ -64,9 +60,9 @@ clearly labeled everywhere.
 - [x] 28. Comparison table of all parameters, traditional vs proposed (Required add-on 3), incl. headroom ablation
 
 ## Phase 6 – Real data & ML extensions
-- [ ] 29. Run real Milan data (Colab or streamed locally); plug into pipeline — script ready & tested, **waiting on you** (see Reminders: needs your guestbook email)
-- [x] 30. Real MAWI processed file (42 days of MAWI agurim backbone flows, 9 stable flows). FCC + CAIDA → see Reminders
-- [ ] 31. Re-run full pipeline + figures on real data (done for real MAWI; re-run once more after Milan/FCC arrive)
+- [x] 29. Run real Milan data (Colab or streamed locally); plug into pipeline — script ready & tested, done, 19 days real (see Reminders) (needs your guestbook email)
+- [x] 30. Real MAWI (42 days of agurim backbone flows, 9 stable flows) + real CESNET (replaces FCC; 100 research-ISP IPs, 6 weeks). CAIDA → see Reminders
+- [x] 31. Re-run full pipeline + figures on real data (done for real MAWI; done for real MAWI + CESNET; final re-run once Milan finishes downloading)
 - [x] 32. Optional extension: LSTM/SARIMA comparison (Section 3.4 "optional")
 
 ## Phase 7 – Dashboard (Required add-on 2), built on final results
@@ -83,4 +79,4 @@ clearly labeled everywhere.
 
 ---
 
-**Progress: 30 / 40 (75%)** 
+**Progress: 32 / 40 (80%)** 

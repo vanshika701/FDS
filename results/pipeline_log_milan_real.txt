@@ -1,0 +1,32 @@
+[16:38:42] [milan] load (real) + preprocess
+[16:38:44] [milan] 172,800 feature rows, 20 features, dropped=[], peak hours=[11, 12, 13, 14]
+[16:38:44] [milan] walk-forward CV (5 folds)
+[16:38:57]     fold 1/5 done
+[16:39:13]     fold 2/5 done
+[16:39:30]     fold 3/5 done
+[16:39:48]     fold 4/5 done
+[16:40:06]     fold 5/5 done
+[16:40:06] [milan] best in CV: Random Forest (depth=10, leaf=5)
+[16:40:06] [milan] final fit + holdout evaluation
+[16:40:24] [milan] simulate allocation (C = 111,009.0)
+[16:40:24] [milan] capacity sweep + noise sensitivity
+[16:40:26] cross-dataset matrix with Random Forest (depth=10, leaf=5), 20 common features
+[16:41:04] done in 142s -> /Users/vanshikasrivastava/Desktop/Projects/FDS/results
+[16:41:06] [milan] LSTM
+[16:42:04]     LSTM trained 24 epochs in 52s, best val MSE 0.0193
+[16:42:04] [milan] SARIMA skipped: 10min windows -> season of 144 steps
+[16:42:04] [milan]
+         forecaster  NMAE  improvement_vs_last_%  jain  unmet_frac
+      Random Forest 0.082                 14.687 0.996       0.078
+  Gradient Boosting 0.083                 14.238 0.996       0.079
+  Linear Regression 0.084                 12.663 0.996       0.079
+               LSTM 0.084                 12.263 0.996       0.079
+         Last Value 0.096                  0.000 0.995       0.080
+Moving Average (1h) 0.113                -17.495 0.996       0.080
+[16:42:04] done
+  dataset                    forecast_model  forecast_NMAE  forecast_gain_vs_last_%  jain_proportional  jain_reactive_headroom  jain_predictive  jain_oracle  gain_from_headroom  gain_from_prediction  gap_to_oracle
+0   milan  Random Forest (depth=10, leaf=5)          0.082                   14.687              0.992                   0.995            0.996          1.0               0.003                 0.001          0.004
+1    mawi                        Last Value          0.240                    0.000              0.965                   0.984            0.984          1.0               0.020                 0.000          0.016
+2   caida  Random Forest (depth=10, leaf=5)          0.283                   13.890              0.963                   0.976            0.981          1.0               0.013                 0.005          0.019
+3  cesnet  Random Forest (depth=10, leaf=5)          0.317                    8.004              0.878                   0.911            0.983          1.0               0.033                 0.072          0.017
+figures -> /Users/vanshikasrivastava/Desktop/Projects/FDS/results/figures

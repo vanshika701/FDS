@@ -300,5 +300,119 @@
         "cmd": "/usr/local/bin/agurim -p -m byte -i 600 -t 1 -n 100 -s 86400 -S 1794700800 -E 1794787200  202611/20261115/20261115.agr 202611/20261116/20261116.agr"
       }
     ]
-  }
+  },
+  "milan": [
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674282",
+      "file": "sms-call-internet-mi-2013-11-04.txt",
+      "downloaded_at": "2026-11-20T14:45:10.150262+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674279",
+      "file": "sms-call-internet-mi-2013-11-05.txt",
+      "downloaded_at": "2026-11-20T14:57:43.590438+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674283",
+      "file": "sms-call-internet-mi-2013-11-06.txt",
+      "downloaded_at": "2026-11-20T15:07:58.374084+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674271",
+      "file": "sms-call-internet-mi-2013-11-07.txt",
+      "downloaded_at": "2026-11-20T15:14:25.159169+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674261",
+      "file": "sms-call-internet-mi-2013-11-08.txt",
+      "downloaded_at": "2026-11-20T15:23:09.414563+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674268",
+      "file": "sms-call-internet-mi-2013-11-09.txt",
+      "downloaded_at": "2026-11-20T15:29:03.904774+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674259",
+      "file": "sms-call-internet-mi-2013-11-10.txt",
+      "downloaded_at": "2026-11-20T15:36:34.431642+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674272",
+      "file": "sms-call-internet-mi-2013-11-11.txt",
+      "downloaded_at": "2026-11-20T15:46:54.685074+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674284",
+      "file": "sms-call-internet-mi-2013-11-12.txt",
+      "downloaded_at": "2026-11-20T15:58:07.666587+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674257",
+      "file": "sms-call-internet-mi-2013-11-13.txt",
+      "downloaded_at": "2026-11-20T18:37:33.793108+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674267",
+      "file": "sms-call-internet-mi-2013-11-14.txt",
+      "downloaded_at": "2026-11-20T18:48:02.146083+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674281",
+      "file": "sms-call-internet-mi-2013-11-15.txt",
+      "downloaded_at": "2026-11-20T19:08:39.983940+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674256",
+      "file": "sms-call-internet-mi-2013-11-16.txt",
+      "downloaded_at": "2026-11-21T09:06:22.796666+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674266",
+      "file": "sms-call-internet-mi-2013-11-17.txt",
+      "downloaded_at": "2026-11-21T09:18:45.688892+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674260",
+      "file": "sms-call-internet-mi-2013-11-18.txt",
+      "downloaded_at": "2026-11-21T09:38:32.524813+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674280",
+      "file": "sms-call-internet-mi-2013-11-19.txt",
+      "downloaded_at": "2026-11-21T10:00:32.579295+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674263",
+      "file": "sms-call-internet-mi-2013-11-20.txt",
+      "downloaded_at": "2026-11-21T10:24:12.249396+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674276",
+      "file": "sms-call-internet-mi-2013-11-21.txt",
+      "downloaded_at": "2026-11-21T10:41:30.144447+00:00"
+    },
+    {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/2674269",
+      "file": "sms-call-internet-mi-2013-11-22.txt",
+      "downloaded_at": "2026-11-21T10:59:35.683934+00:00"
+    }
+  ],
+  "cesnet": [
+    {
+      "url": "https://zenodo.org/api/records/13382427/files/ip_addresses_sample.tar.gz/content",
+      "downloaded_at": "2026-11-20T15:00:32.536141+00:00"
+    },
+    {
+      "url": "https://zenodo.org/api/records/13382427/files/times.tar.gz/content",
+      "downloaded_at": "2026-11-20T15:00:32.536789+00:00"
+    }
+  ],
+  "geant": [
+    {
+      "url": "https://sndlib.put.poznan.pl/download/directed-geant-uhlig-15min-over-4months-ALL-native.tgz",
+      "dataset": "G\u00c9ANT traffic matrices (Uhlig et al., TOTEM), via SNDlib",
+      "downloaded_at": "2026-11-21T11:55:39.764748+00:00"
+    }
+  ]
 }

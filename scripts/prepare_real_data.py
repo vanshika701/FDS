@@ -10,8 +10,12 @@ selected users, and deleted immediately. Works the same locally and in Colab.
     #   tshark -r trace.pcap -T fields -E separator=, -e frame.time_epoch -e ip.src -e frame.len > trace.csv
     python scripts/prepare_real_data.py packets --name mawi --inputs trace1.csv trace2.csv --window 1min
 
-    # FCC Measuring Broadband America: data-usage CSV(s) from fcc.gov
-    python scripts/prepare_real_data.py fcc --inputs curr_datausage.csv
+    # CESNET-TimeSeries24 (replaces FCC): per-IP ISP traffic, Zenodo 10.5281/zenodo.13382427
+    python scripts/prepare_real_data.py cesnet --start 2023-10-09 --days 42 --top-n 150
+
+    # FCC Measuring Broadband America: data-usage CSV(s) from fcc.gov (kept for reference;
+    # fcc.gov download links were not reachable, so CESNET is used instead)
+    python scripts/prepare_real_data.py fcc --inputs curr_netusage.csv
 
 Afterwards set `source: real` for that dataset in config.yaml.
 Every download is logged to data/processed/provenance.json (URL + date), as the
@@ -33,11 +37,72 @@ from pathlib import Path
 
 import pandas as pd
 
-from bwalloc.config import PROCESSED_DIR
-from bwalloc.data.loaders import packets_to_demand, parse_fcc_usage, parse_milan_file
+from bwalloc.config import DATA_DIR, PROCESSED_DIR
+from bwalloc.data.loaders import (packets_to_demand, parse_cesnet_ip_dir, parse_fcc_usage,
+                                  parse_milan_file, parse_sndlib_tm_tar)
 
 DATAVERSE = "https://dataverse.harvard.edu"
 MILAN_DOI = "doi:10.7910/DVN/EGZHFV"
+CESNET_RECORD = "https://zenodo.org/api/records/13382427/files"
+GEANT_URL = ("https://sndlib.put.poznan.pl/download/"
+             "directed-geant-uhlig-15min-over-4months-ALL-native.tgz")
+
+
+def prepare_geant(start: str, days: int, top_n: int, window: str = "1h",
+                  holdout_frac: float = 0.15) -> Path:
+    """GÉANT 15-min traffic matrices (SNDlib, ~40 MB) -> hourly demand per OD pair."""
+    raw = DATA_DIR / "raw" / "geant"
+    raw.mkdir(parents=True, exist_ok=True)
+    tar_path = raw / "geant-15min-native.tgz"
+    if not tar_path.exists():
+        print("downloading GÉANT traffic matrices ...", flush=True)
+        _download(GEANT_URL, tar_path)
+    record_provenance("geant", {"url": GEANT_URL, "dataset": "GÉANT traffic matrices "
+                                "(Uhlig et al., TOTEM), via SNDlib"})
+    df = parse_sndlib_tm_tar(tar_path, start, days)
+    n_files = df["timestamp"].nunique()
+    # 15-min -> hourly mean (missing 15-min files simply do not contribute to the mean)
+    df["timestamp"] = df["timestamp"].dt.floor(window)
+    df = df.groupby(["entity_id", "timestamp"], as_index=False)["demand_mbps"].mean()
+    cutoff = df["timestamp"].min() + (df["timestamp"].max() - df["timestamp"].min()) * (1 - holdout_frac)
+    top = (df[df["timestamp"] < cutoff].groupby("entity_id")["demand_mbps"].mean()
+             .nlargest(top_n).index)
+    out_path = PROCESSED_DIR / "geant.csv"
+    df[df["entity_id"].isin(top)].to_csv(out_path, index=False)
+    print(f"wrote {out_path}: {len(top)} OD pairs, {n_files} 15-min matrices, "
+          f"{df['timestamp'].nunique()} hourly windows")
+    return out_path
+
+
+def prepare_cesnet(start: str, days: int, top_n: int, holdout_frac: float = 0.15) -> Path:
+    """CESNET-TimeSeries24 IP sample (1000 IPs, ~170 MB) -> hourly per-IP demand."""
+    import shutil
+    import tarfile
+
+    raw = DATA_DIR / "raw" / "cesnet"
+    raw.mkdir(parents=True, exist_ok=True)
+    for fname in ("ip_addresses_sample.tar.gz", "times.tar.gz"):
+        if not (raw / fname).exists():
+            print(f"downloading {fname} ...", flush=True)
+            _download(f"{CESNET_RECORD}/{fname}/content", raw / fname)
+        record_provenance("cesnet", {"url": f"{CESNET_RECORD}/{fname}/content"})
+    with tarfile.open(raw / "times.tar.gz") as t:
+        t.extractall(raw, filter="data")
+    with tarfile.open(raw / "ip_addresses_sample.tar.gz") as t:
+        members = [m for m in t.getmembers() if "/agg_1_hour/" in m.name]
+        t.extractall(raw, members=members, filter="data")
+
+    df = parse_cesnet_ip_dir(raw / "ip_addresses_sample" / "agg_1_hour",
+                             raw / "times" / "times_1_hour.csv", start, days)
+    # keep the busiest IPs, judged on the non-holdout part only
+    cutoff = df["timestamp"].min() + (df["timestamp"].max() - df["timestamp"].min()) * (1 - holdout_frac)
+    top = (df[df["timestamp"] < cutoff].groupby("entity_id")["demand_mbps"].mean()
+             .nlargest(top_n).index)
+    out_path = PROCESSED_DIR / "cesnet.csv"
+    df[df["entity_id"].isin(top)].to_csv(out_path, index=False)
+    shutil.rmtree(raw / "ip_addresses_sample")  # extracted copy; the archive is kept
+    print(f"wrote {out_path}: {len(top)} IPs, {df['timestamp'].nunique()} hourly windows")
+    return out_path
 
 
 def record_provenance(name: str, entry: dict) -> None:
@@ -169,6 +234,14 @@ def main(argv=None) -> None:
     p.add_argument("--inputs", nargs="+", required=True)
     p.add_argument("--window", default="1min")
     p.add_argument("--top-n", type=int, default=150)
+    c = sub.add_parser("cesnet")
+    c.add_argument("--start", default="2023-10-09", help="first day (a Monday)")
+    c.add_argument("--days", type=int, default=42)
+    c.add_argument("--top-n", type=int, default=150)
+    g = sub.add_parser("geant")
+    g.add_argument("--start", default="2005-05-09", help="first day (a Monday)")
+    g.add_argument("--days", type=int, default=42)
+    g.add_argument("--top-n", type=int, default=150)
     f = sub.add_parser("fcc")
     f.add_argument("--inputs", nargs="+", required=True)
     f.add_argument("--window", default="1h")
@@ -184,6 +257,10 @@ def main(argv=None) -> None:
             ap.error("the Milan guestbook needs an email: set MILAN_GUESTBOOK_EMAIL or pass --email")
         gb = {"email": a.email, "name": a.name, "institution": a.institution, "position": ""}
         prepare_milan(a.days, a.cells, a.start, gb)
+    elif a.kind == "geant":
+        prepare_geant(a.start, a.days, a.top_n)
+    elif a.kind == "cesnet":
+        prepare_cesnet(a.start, a.days, a.top_n)
     elif a.kind == "packets":
         prepare_packets(a.name, a.inputs, a.window, a.top_n)
     else:

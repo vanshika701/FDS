@@ -1,0 +1,43 @@
+[17:43:07] [geant] load (real) + preprocess
+[17:43:08] [geant] 84,000 feature rows, 20 features, dropped=[], peak hours=[12, 13, 14, 15]
+[17:43:08] [geant] walk-forward CV (5 folds)
+[17:43:15]     fold 1/5 done
+[17:43:29]     fold 2/5 done
+[17:43:52]     fold 3/5 done
+[17:44:14]     fold 4/5 done
+[17:44:43]     fold 5/5 done
+[17:44:43] [geant] best in CV: Last Value
+[17:44:43] [geant] final fit + holdout evaluation
+[17:45:19] [geant] simulate allocation (C = 12,008,176.7)
+[17:45:19] [geant] capacity sweep + noise sensitivity
+[17:45:20] cross-dataset matrix with Random Forest (depth=10, leaf=5), 20 common features
+[17:46:03] done in 176s -> /Users/vanshikasrivastava/Desktop/Projects/FDS/results
+[17:46:06] [geant] LSTM
+[17:46:17]     LSTM trained 5 epochs in 9s, best val MSE 0.4859
+[17:46:17] [geant] SARIMA(1,0,1)x(1,0,1,24) for 100 users
+[17:46:44]     SARIMA 10/100 users (27s)
+[17:47:06]     SARIMA 20/100 users (49s)
+[17:47:30]     SARIMA 30/100 users (73s)
+[17:47:54]     SARIMA 40/100 users (97s)
+[17:48:17]     SARIMA 50/100 users (119s)
+[17:48:39]     SARIMA 60/100 users (141s)
+[17:49:02]     SARIMA 70/100 users (165s)
+[17:49:26]     SARIMA 80/100 users (189s)
+[17:49:46]     SARIMA 90/100 users (209s)
+[17:50:07]     SARIMA 100/100 users (230s)
+[17:50:07] [geant]
+         forecaster  NMAE  improvement_vs_last_%  jain  unmet_frac
+             SARIMA 0.109                  2.924 1.000       0.000
+         Last Value 0.112                  0.000 1.000       0.000
+Moving Average (1h) 0.147                -31.531 1.000       0.000
+               LSTM 0.587               -423.776 1.000       0.000
+  Gradient Boosting 1.216               -985.075 0.908       0.067
+  Linear Regression 2.088              -1763.682 0.711       0.096
+      Random Forest 2.202              -1865.247 1.000       0.000
+[17:50:07] done
+  dataset                    forecast_model  forecast_NMAE  forecast_gain_vs_last_%  jain_proportional  jain_reactive_headroom  jain_predictive  jain_oracle  gain_from_headroom  gain_from_prediction  gap_to_oracle
+0   milan  Random Forest (depth=10, leaf=5)          0.082                   14.687              0.992                   0.995            0.996          1.0               0.003                 0.001          0.004
+1    mawi                        Last Value          0.240                    0.000              0.965                   0.984            0.984          1.0               0.020                 0.000          0.016
+2   geant                        Last Value          0.112                    0.000              0.970                   1.000            1.000          1.0               0.030                 0.000          0.000
+3  cesnet  Random Forest (depth=10, leaf=5)          0.317                    8.004              0.878                   0.911            0.983          1.0               0.033                 0.072          0.017
+figures -> /Users/vanshikasrivastava/Desktop/Projects/FDS/results/figures
